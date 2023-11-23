@@ -1,0 +1,16 @@
+﻿namespace AlpakaApi.Model
+{
+    public class Alpakas
+    {
+
+        public int alpaka { get; set; }
+        public string Alpaka_name { get; set; }
+        public string color { get; set; }
+
+        public int age { get; set; }
+
+        public string description { get; set; }
+
+
+    }
+}
