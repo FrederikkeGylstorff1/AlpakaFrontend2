@@ -1,0 +1,72 @@
+﻿@page "/events"
+
+@using Microsoft.AspNetCore.Components.Routing
+@inject NavigationManager NavigationManager
+
+<h1>Upcoming Events</h1>
+
+@foreach (var ev in events)
+{
+    <div class="event">
+        <h2>@ev.Name</h2>
+        <img src="@ev.Alpaka.ImageUrl" alt="@ev.Alpaka.Name" />
+        <p>@ev.Description</p>
+        <button @onclick="() => BookEvent(ev)">Book Now</button>
+    </div>
+}
+
+@code {
+
+    
+
+    public class Alpaka
+    {
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
+    }
+
+    public class Event
+    {
+        public string Name { get; set; }
+        public Alpaka Alpaka { get; set; }
+        public string Description { get; set; }
+    }
+
+
+    List<Event> events = new List<Event>
+    {
+        new Event
+        {
+            Name = "Alpaka Trekking Adventure",
+            Alpaka = new Alpaka { Name = "Alpaka 1", ImageUrl = "media/alpaka1.jpg" },
+            Description = "Join us for an amazing alpaka trekking adventure through scenic trails."
+        },
+
+          new Event
+        {
+            Name = "Alpaka Yoga and Meditation",
+            Alpaka = new Alpaka { Name = "Alpaka 2", ImageUrl = "media/alpaka2.jpg" },
+            Description = "Experience the zen of alpaka yoga and meditation in a tranquil alpaka farm."
+        },
+        new Event
+        {
+            Name = "Alpaka Picnic and Picture Time",
+            Alpaka = new Alpaka { Name = "Alpaka 3", ImageUrl = "media/alpaka3.jpg" },
+            Description = "Enjoy a relaxing picnic with our friendly alpakas and capture memorable pictures."
+        },
+        new Event
+        {
+            Name = "Alpaka Shearing Workshop",
+            Alpaka = new Alpaka { Name = "Alpaka 4", ImageUrl = "media/alpaka2.jpg" },
+            Description = "Learn the art of alpaka shearing from our experienced experts."
+        },
+
+        // Add more events here
+    };
+
+    void BookEvent(Event ev) 
+    {
+        NavigationManager.NavigateTo("/booking");
+    }
+}
+

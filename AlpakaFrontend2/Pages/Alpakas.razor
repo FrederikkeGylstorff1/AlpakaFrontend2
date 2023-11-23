@@ -1,0 +1,40 @@
+﻿@page "/alpakas"
+
+
+
+
+<div class="apakka">
+    <head>
+        <link rel="stylesheet" href="Alpakas.razor.css" />
+    </head>
+
+    <h1>Alpaka List</h1>
+
+    @foreach (var alpaka in alpakas)
+    {
+        <div class="alpaka-item">
+            <img src="@alpaka.ImageUrl" alt="@alpaka.Name" />
+            <p>@alpaka.Name</p>
+        </div>
+    }
+
+
+</div>
+
+
+@code {
+
+    public class Alpaka
+    {
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
+    }
+
+    List<Alpaka> alpakas = new List<Alpaka>
+    {
+        new Alpaka { Name = "Alpaka 1", ImageUrl = "media/alpaka1.jpg" },
+        new Alpaka { Name = "Alpaka 2", ImageUrl = "media/alpaka2.jpg" },
+        new Alpaka { Name = "Alpaka 3", ImageUrl = "media/alpaka3.jpg" }
+    };
+
+}
