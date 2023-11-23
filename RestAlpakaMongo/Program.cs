@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen(c =>
 // Configure MongoDB
 builder.Services.AddSingleton<IMongoClient, MongoClient>(s =>
 {
-    var uri = builder.Configuration["MongoDBConnection:ConnectionString"];
+    var uri = builder.Configuration["ConnectionStrings:DefaultConnection"];
     return new MongoClient(uri);
 });
 

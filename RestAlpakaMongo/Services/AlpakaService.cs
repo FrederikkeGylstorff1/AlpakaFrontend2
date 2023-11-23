@@ -7,9 +7,10 @@ namespace RestAlpakaMongo.Services;
 
 public class AlpakaService : MongoDbService<Alpaka>
 {
-    public AlpakaService(IMongoClient client, IConfiguration config)
-        : base(client, config, "Alpakas")
+    public AlpakaService(IConfiguration config)
+        : base(new MongoClient(config.GetConnectionString("DefaultConnection")), config, "Alpakas")
     {
     }
+
     // Implement other CRUD operations here
 }
