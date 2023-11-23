@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RestAlpaka.Model;
 
 namespace RestAlpaka.Model
 {
@@ -11,3 +12,4 @@ namespace RestAlpaka.Model
         public DbSet<Alpaka> Alpakas { get; set; }
     }
 }
+
