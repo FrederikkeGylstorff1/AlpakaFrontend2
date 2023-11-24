@@ -4,8 +4,10 @@ namespace RestAlpaka.Managers
 {
     public class AlpakaManager : BaseDBContext<Alpaka>
     {
+
         public AlpakaManager(AlpakaDbContext context) : base(context)
         {
+
         }
 
         // Here you can override any virtual methods from BaseDBContext<T> if needed.
