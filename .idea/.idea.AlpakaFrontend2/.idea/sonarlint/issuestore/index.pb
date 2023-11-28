@@ -11,16 +11,12 @@ Q
 !AlpakaFrontend2/Pages/Index.razor,b/a/babb91b270515678b1acf4ab285ec437b645ebb5
 S
 #AlpakaFrontend2/Pages/Alpakas.razor,5/c/5c672d5e18116b7b6b701b44e2454fdc26d52986
-c
-3RestAlpaka/Controllers/WeatherForecastController.cs,0/b/0b49669fd7ea3a2249f1d07611374db03b2d7b0b
 W
 'RestAlpaka/appsettings.Development.json,c/d/cd275fcecdd16f6e4e8718743aff8292fa24286c
 E
 RestAlpaka/Program.cs,1/f/1f3be44693a95560fa5dbcd0aaf372e9f249a782
 K
 RestAlpaka/appsettings.json,3/1/31fbda733d6047489dfa1fe81ae6a0f9c37018b2
-M
-RestAlpaka/WeatherForecast.cs,2/d/2dceed09cf2f06a61b3733678bc440ee66d76646
 L
 RestAlpaka/RestAlpaka.csproj,0/b/0b48cdf325683596036329daccda4479d935672a
 S
