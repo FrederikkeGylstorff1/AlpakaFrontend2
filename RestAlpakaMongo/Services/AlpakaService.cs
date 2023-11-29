@@ -10,6 +10,7 @@ public class AlpakaService : MongoDbService<Alpaka>
     public AlpakaService(IConfiguration config)
         : base(new MongoClient(config.GetConnectionString("DefaultConnection")), config, "Alpakas")
     {
+
     }
 
     // Implement other CRUD operations here

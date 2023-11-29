@@ -24,6 +24,14 @@ builder.Services.AddSingleton<IMongoClient, MongoClient>(s =>
 });
 
 builder.Services.AddSingleton<AlpakaService>();
+builder.Services.AddSingleton<BookingService>();
+builder.Services.AddSingleton<CustomersService>();
+builder.Services.AddSingleton<EventService>();
+builder.Services.AddSingleton<LocationService>();
+builder.Services.AddSingleton<PaymentsService>();
+builder.Services.AddSingleton<ReviewsService>();
+builder.Services.AddSingleton<UserService>();
+builder.Services.AddSingleton<TicketsService>(); 
 
 var app = builder.Build();
 

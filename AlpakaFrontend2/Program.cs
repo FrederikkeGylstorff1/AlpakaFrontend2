@@ -1,10 +1,22 @@
+using AlpakaFrontend2.Service;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+
+using static System.Net.WebRequestMethods;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using AlpakaFrontend2;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddBlazorBootstrap();
+
+
+
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:44364/") });
+
+builder.Services.AddScoped<ApiService>();
 
 var app = builder.Build();
 
