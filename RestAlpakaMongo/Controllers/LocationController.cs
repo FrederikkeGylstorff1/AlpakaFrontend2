@@ -42,7 +42,7 @@ namespace RestAlpakaMongo.Controllers
         public async Task<ActionResult<Location>> CreateLocation(Location location)
         {
             await _locationService.CreateAsync(location);
-            return CreatedAtAction("GetCustomers", new { id = location.Id }, location);
+            return CreatedAtAction("GetLocation", new { id = location.Id }, location);
         }
 
         // PUT: api/Location/5

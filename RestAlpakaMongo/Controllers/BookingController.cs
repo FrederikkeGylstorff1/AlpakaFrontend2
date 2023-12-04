@@ -42,7 +42,7 @@ namespace RestAlpakaMongo.Controllers
         public async Task<ActionResult<Booking>> CreateBooking(Booking b)
         {
             await _bookingService.CreateAsync(b);
-            return CreatedAtAction("GetAlpaka", new { id = b.Id }, b);
+            return CreatedAtAction("GetBooking", new { id = b.Id }, b);
         }
 
         // PUT: api/Booking/5

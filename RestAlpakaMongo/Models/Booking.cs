@@ -7,8 +7,7 @@ namespace RestAlpakaMongo.Models
     public class Booking : BaseEntity
     {
     
-        public int Customer_id { get; set; }
-        public int Alpaka_id { get; set; }
+     
         public DateTime Booking_date { get; set; }
         public DateTime Start_date { get; set; }
         public DateTime End_date { get; set; }
