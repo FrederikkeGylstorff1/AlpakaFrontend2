@@ -7,7 +7,7 @@ namespace RestAlpakaMongo.Models
     public class Location : BaseEntity
     {
 
-        public int Location_id { get; set; }
+        
 
         public string City { get; set; }
 

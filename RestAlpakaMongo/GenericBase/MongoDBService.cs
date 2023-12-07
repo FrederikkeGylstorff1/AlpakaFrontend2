@@ -4,7 +4,7 @@ namespace RestAlpakaMongo.GenericBase
 {
     public abstract class MongoDbService<T> where T : BaseEntity
     {
-        private readonly IMongoCollection<T> _collection;
+        protected readonly IMongoCollection<T> _collection;
 
         protected MongoDbService(IMongoClient client, IConfiguration config, string collectionName)
         {

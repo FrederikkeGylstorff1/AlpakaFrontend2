@@ -7,9 +7,7 @@ namespace RestAlpakaMongo.Models
     public class Reviews : BaseEntity
     {
         
-        public int Review_id { get; set; }
-        public int Customer_id { get; set; }
-        public int Alpaka_id { get; set; }
+     
         public int Rating { get; set; }
         public string Comment { get; set; }
         public DateTime Review_date { get; set; }

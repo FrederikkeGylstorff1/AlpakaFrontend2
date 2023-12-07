@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestAlpakaMongo.Models;
 using RestAlpakaMongo.Services;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using RestAlpakaMongo.DTOs;
 
 namespace RestAlpakaMongo.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class BookingController : ControllerBase
@@ -16,44 +18,43 @@ namespace RestAlpakaMongo.Controllers
             _bookingService = bookingService;
         }
 
-
         // GET: api/Booking
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Booking>>> GetAllBooking()
+        public async Task<ActionResult<IEnumerable<Booking>>> GetAllBookings()
         {
-            var Bookings = await _bookingService.GetAllAsync();
-            return Ok(Bookings);
+            var bookings = await _bookingService.GetAllBookingsAsync();
+            return Ok(bookings);
         }
 
         // GET: api/Booking/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Booking>> GetBooking(string id)
         {
-            var bookings = await _bookingService.GetByIdAsync(id);
-            if (bookings == null)
+            var booking = await _bookingService.GetBookingByIdAsync(id);
+            if (booking == null)
             {
                 return NotFound();
             }
-            return Ok(bookings);
+            return Ok(booking);
         }
 
         // POST: api/Booking
         [HttpPost]
-        public async Task<ActionResult<Booking>> CreateBooking(Booking b)
+        public async Task<ActionResult<Booking>> CreateBooking([FromBody] BookingDto bookingDto)
         {
-            await _bookingService.CreateAsync(b);
-            return CreatedAtAction("GetBooking", new { id = b.Id }, b);
+            var newBooking = await _bookingService.CreateBookingAsync(bookingDto);
+            return CreatedAtAction(nameof(GetBooking), new { id = newBooking.Id }, newBooking);
         }
 
         // PUT: api/Booking/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBooking(string id, Booking b)
+        public async Task<IActionResult> UpdateBooking(string id, [FromBody] Booking booking)
         {
-            if (id != b.Id)
+            if (id != booking.Id)
             {
                 return BadRequest();
             }
-            await _bookingService.UpdateAsync(id, b);
+            await _bookingService.UpdateAsync(id, booking);
             return NoContent();
         }
 
@@ -61,7 +62,7 @@ namespace RestAlpakaMongo.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBooking(string id)
         {
-            var booking = await _bookingService.GetByIdAsync(id);
+            var booking = await _bookingService.GetBookingByIdAsync(id);
             if (booking == null)
             {
                 return NotFound();
@@ -69,6 +70,5 @@ namespace RestAlpakaMongo.Controllers
             await _bookingService.DeleteAsync(id);
             return NoContent();
         }
-
     }
 }

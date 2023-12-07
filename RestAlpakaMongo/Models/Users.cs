@@ -6,7 +6,6 @@ namespace RestAlpakaMongo.Models
     public class Users : BaseEntity
     {
       
-        public int User_id { get; set; }
 
         public string Username { get; set; }
 

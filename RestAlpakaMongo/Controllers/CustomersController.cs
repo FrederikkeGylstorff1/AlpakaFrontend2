@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RestAlpakaMongo.DTOs;
 using RestAlpakaMongo.Models;
 using RestAlpakaMongo.Services;
 
@@ -8,11 +9,13 @@ namespace RestAlpakaMongo.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-       private readonly CustomersService _customersService;
+        private readonly CustomersService _customersService;
+   
 
         public CustomersController(CustomersService customersService)
         {
-            _customersService = customersService;  
+            _customersService = customersService;
+         
         }
 
 
@@ -36,25 +39,38 @@ namespace RestAlpakaMongo.Controllers
             return Ok(customers);
         }
 
-        // POST: api/Customers
+        
         [HttpPost]
-        public async Task<ActionResult<Customers>> CreateCustomers(Customers c)
+        public async Task<ActionResult<Customers>> CreateCustomers([FromBody] CustomerDto customerDto)
         {
-            await _customersService.CreateAsync(c);
-            return CreatedAtAction("GetCustomers", new { id = c.Id }, c);
+            try
+            {
+                var customer = await _customersService.CreateCustomerAsync(customerDto);
+                return CreatedAtAction("GetCustomers", new { id = customer.Id }, customer);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // PUT: api/Customers/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCustomers(string id, Customers c)
+        public async Task<IActionResult> UpdateCustomers(string id, [FromBody] CustomerDto customerDto)
         {
-            if (id != c.Id)
+            try
             {
-                return BadRequest();
+                await _customersService.UpdateCustomerAsync(id, customerDto);
+                return NoContent();
             }
-            await _customersService.UpdateAsync(id, c);
-            return NoContent();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
+
+
+
+
 
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]

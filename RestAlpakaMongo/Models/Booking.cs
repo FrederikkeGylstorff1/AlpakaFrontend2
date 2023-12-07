@@ -12,8 +12,8 @@ namespace RestAlpakaMongo.Models
         public DateTime Start_date { get; set; }
         public DateTime End_date { get; set; }
 
-        // Navigation properties
+       
         public Customers Customer { get; set; }
-        public Alpaka Alpaka { get; set; }
+        public List<Alpaka> Alpaka { get; set; }
     }
 }
