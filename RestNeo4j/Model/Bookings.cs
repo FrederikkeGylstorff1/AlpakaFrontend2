@@ -5,27 +5,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RestAlpaka.Model
 {
-    public class Bookings
+    public class Booking
     {
-     
-        public int Booking_id { get; set; }
-        
-        public int Customer_id { get; set; }
+        public int BookingId { get; set; }
+        public DateTime BookingDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
-       
-        public int Alpaka_id { get; set; }
-
-  
-        public DateTime Booking_date { get; set; }
-
-
-        public DateTime Start_date { get; set; }
-
-      
-        public DateTime End_date { get; set; }
-
-        // Navigation properties
-        public List<Customers> Customers { get; set; }
+        // Relationships
+        public List<Customer> Customers { get; set; }
         public List<Alpaka> Alpakas { get; set; }
     }
 }

@@ -36,6 +36,10 @@ namespace Neoflix
                 var driver = GraphDatabase.Driver(uri, AuthTokens.Basic(user, password));
                 return driver;
             });
+            services.AddSingleton<UserService>();
+            services.AddSingleton<CustomerService>();
+            services.AddSingleton<LocationService>();
+
 
             services.AddSingleton<AlpakaService>();
 
