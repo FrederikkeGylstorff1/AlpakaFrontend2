@@ -23,9 +23,6 @@ namespace RestAlpaka.Model
         [DataType(DataType.Date)]
         public DateTime End_date { get; set; }
 
-        // Navigation properties
-        public Customers Customer { get; set; }
-        public Alpaka Alpaka { get; set; }
     }
 }
 

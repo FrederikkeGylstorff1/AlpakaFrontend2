@@ -35,13 +35,21 @@ body {
 .topnav {
     overflow: hidden;
     background-color: white; /* Set the background color to white */
+  
+ 
 }
 
+
 .topnav-center {
+   /* justify-content: center;
+    align-items: center;*/
     display: flex;
-    justify-content: center;
+}
+
+.topnav-right {
+    display: flex;
+    float: right;
     align-items: center;
-    flex-grow: 1; /* Allow the center content to grow and take up remaining space */
 }
 
 .topnav a {
@@ -57,11 +65,7 @@ body {
         color: black;
     }
 
-.topnav-right {
-    float: right;
-    display: flex;
-    align-items: center;
-}
+
 
 .navbar-brand {
     font-weight: bold;
