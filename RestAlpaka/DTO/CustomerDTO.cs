@@ -1,12 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace RestAlpaka.Model
+namespace RestAlpaka.DTO
 {
-    public class Customers
+    public class CustomerDTO
     {
-        [Key]
-        public int Customer_id { get; set; }
 
         [ForeignKey("User")]
         public int User_id { get; set; }
@@ -27,8 +25,5 @@ namespace RestAlpaka.Model
 
         [StringLength(100, ErrorMessage = "Address must be up to 100 characters.")]
         public string Address { get; set; }
-
-
     }
 }
-

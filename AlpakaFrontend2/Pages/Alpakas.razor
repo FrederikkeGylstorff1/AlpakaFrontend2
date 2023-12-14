@@ -2,10 +2,10 @@
 @using AlpakaFrontend2.Service;
 @inject ApiService ApiService
 @using System.Net.Http
+@using RestAlpaka.Model
 @inject HttpClient Http
 
-<div class="apakka">
-   
+<div class="alpaka">
     <h1>Alpaka List</h1>
 
     @if (alpakas == null)
@@ -15,43 +15,43 @@
     else
     {
         @foreach (var alpaka in alpakas)
-    {
+        {
+            var image = imagesList.FirstOrDefault(i => i.Name == alpaka.Alpaka_name);
 
-        <div class="alpaka-item">
-            @* <img src="@alpaka.ImageUrl" alt="@alpaka.Name" /> *@
-            <p>@alpaka.Name</p>
-        </div>
+            <div class="alpaka-item">
+                <img src="@image?.ImageUrl" alt="Alpaca Image " />
+                <p><strong>Name:</strong> @alpaka.Alpaka_name</p>
+                <p><strong>Age:</strong> @alpaka.age</p>
+                <p><strong>Color:</strong> @alpaka.color</p>
+                <p><strong>Description:</strong> @alpaka.description</p>
+            </div>
+        }
     }
-
-    }
-     
-
 </div>
 
 
 @code {
 
-    public class Alpaka
-    {
-        
-        public string Name { get; set; }
-        // public string ImageUrl { get; set; }
-    }
-
-
     private Alpaka[]? alpakas;
 
-    protected override async Task OnInitializedAsync() => 
-    alpakas = await Http.GetFromJsonAsync<Alpaka[]>("api/Alpaka");
-    
-        
-    
 
-    // List<Alpaka> alpakas = new List<Alpaka>
-    // {
-    //     new Alpaka { Name = "Alpaka 1", ImageUrl = "media/alpaka1.jpg" },
-    //     new Alpaka { Name = "Alpaka 2", ImageUrl = "media/alpaka2.jpg" },
-    //     new Alpaka { Name = "Alpaka 3", ImageUrl = "media/alpaka3.jpg" }
-    // };
+    protected override async Task OnInitializedAsync() =>
+    alpakas = await ApiService.GetTAsync<Alpaka[]>("api/Alpaka");
+
+    public class Images
+    {
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
+    }
+
+    private List<Images> imagesList = new List<Images>
+    {
+        new Images { Name = "Alpaka1", ImageUrl = "Media/alpaka1.jpg" },
+         new Images { Name = "Alpaka2", ImageUrl = "Media/alpaka2.jpg" },
+          new Images { Name = "bo", ImageUrl = "Media/alpaka3.jpg" },
+       
+        // Add more images if needed
+    };
+
 
 }

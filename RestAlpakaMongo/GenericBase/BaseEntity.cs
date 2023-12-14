@@ -9,3 +9,5 @@ public abstract class BaseEntity
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
 }
+
+

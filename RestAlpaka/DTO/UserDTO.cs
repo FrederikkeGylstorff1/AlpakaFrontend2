@@ -1,23 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RestAlpaka.Model
+namespace RestAlpaka.DTO
 {
-    public class Users
+    public class UserDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int User_id { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "Username must be between 1 and 50 characters.")]
         public string Username { get; set; }
 
-    
+        [Required]
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters.")]
         public string Password { get; set; }
-        
-        public string PasswordHash { get; set; } 
 
         [Required]
         [EmailAddress(ErrorMessage = "Invalid email address.")]
