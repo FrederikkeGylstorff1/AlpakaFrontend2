@@ -130,17 +130,7 @@ P
 J
 AlpakaFrontend2/Program.cs,5/6/5600f13558f018d663a00449ab8d91d1559589fd
 M
-AlpakaFrontend2/migration.sql,7/5/7518eac7f6ef0f56edec4a5f6a1ddfa5c5b316b9
-R
-"AlpakaFrontend2/Pages/Login.cshtml,4/6/46326ada6baf6f788ef91b1736d7365a7ac0e9fb
-U
-%AlpakaFrontend2/Pages/Login.cshtml.cs,a/5/a594a73d63a57d63842318a97c6d10121d385f30
-M
 AlpakaFrontend2/NavMenu.razor,6/4/6471d478f10564f5e051be9c86eb4eb2828fe799
-U
-%AlpakaFrontend2/Pages/Register.cshtml,d/c/dc7a55609f3456c0ece655d8bb6cdbc01757d6e8
-X
-(AlpakaFrontend2/Pages/Register.cshtml.cs,7/f/7f3a2e239a3425fb38fa243863b1c97948fde79b
 f
 6UserManagement/Controllers/AuthenticationController.cs,b/3/b3956d4cf20be43318f41eca6fa01736628fc63f
 `

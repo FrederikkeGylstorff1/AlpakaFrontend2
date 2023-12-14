@@ -1,6 +1,12 @@
 ﻿@page "/CreateAlpakaEvent"
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject ProtectedSessionStorage sessionStorage
+
 
 @using RestAlpaka.Model
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 
 <h3>Create Alpaka and Event</h3>
 
@@ -83,18 +89,34 @@
     private Event eventModel = new Event();
     private string alpakaSuccessMessage;
     private string eventSuccessMessage;
+    private const string TokenKey = "authToken"; 
+    private bool isAuthenticated = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var tokenResult = await sessionStorage.GetAsync<string>(TokenKey);
+            isAuthenticated = tokenResult.Success && !string.IsNullOrEmpty(tokenResult.Value);
+
+            if (!isAuthenticated)
+            {
+                NavigationManager.NavigateTo("login");
+            }
+
+            StateHasChanged(); // Re-render the component
+        }
+    }
 
     private void CreateAlpaka()
     {
-        // Implement logic to save alpaka to the database or perform any other actions
-        // You can use the 'alpaka' object to access the entered alpaka details
+        // Implementation for creating Alpaka
         alpakaSuccessMessage = "Alpaka created successfully!";
     }
 
     private void CreateEvent()
     {
-        // Implement logic to save event to the database or perform any other actions
-        // You can use the 'eventModel' object to access the entered event details
+        // Implementation for creating Event
         eventSuccessMessage = "Event created successfully!";
     }
 }
