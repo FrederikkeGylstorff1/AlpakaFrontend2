@@ -4,6 +4,7 @@ using MongoDB.Driver;
 
 using Microsoft.OpenApi.Models;
 using RestAlpakaMongo.Interfaces;
+using RestAlpakaMongo.MongoDBInitializer;
 using RestAlpakaMongo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,8 @@ builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<TicketsService>(); 
 
 var app = builder.Build();
+var dbInitializer = app.Services.GetService<DatabaseInitializer>();
+dbInitializer?.Initialize();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

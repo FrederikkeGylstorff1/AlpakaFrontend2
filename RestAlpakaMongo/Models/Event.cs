@@ -6,13 +6,13 @@ namespace RestAlpakaMongo.Models
 {
     public class Event : BaseEntity
     {
-        public string First_name { get; set; }
-        public string Last_name { get; set; }
-        public string Phone_number { get; set; }
-        public string Address { get; set; }
 
-        // Navigation properties
-        public Users User { get; set; }
+        public DateTime EventDate { get; set; }
+        public int Capacity { get; set; }
+        public string Description { get; set; }
+        public string Name { get; set; }
+
+        // Relationships
         public Location Location { get; set; }
     }
 }

@@ -34,6 +34,7 @@
 
     private Alpaka[]? alpakas;
 
+
     protected override async Task OnInitializedAsync() =>
     alpakas = await ApiService.GetTAsync<Alpaka[]>("api/Alpaka");
 
@@ -51,7 +52,6 @@
        
         // Add more images if needed
     };
-
 
 
 }
