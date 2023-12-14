@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using RestAlpaka.Model; 
 
 
 namespace AlpakaFrontend2.Service
@@ -15,13 +16,24 @@ namespace AlpakaFrontend2.Service
         }
 
 
+        public async Task CreateEvent(Event @event)
+        {
+            await _httpClient.PostAsJsonAsync("Event", @event);
+         
+        }
+
         public async Task<T> GetTAsync<T>(string endpoint)
         {
             return await _httpClient.GetFromJsonAsync<T>(endpoint); 
         }
 
+        public async Task CreateAsync<T>(string endpoint, T data)
+        {
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync(endpoint, data);
+        }
 
-        public async Task<TResponse> CreateAsync<TRequest, TResponse>(string endpoint, TRequest data)
+
+            public async Task<TResponse> CreateAsync<TRequest, TResponse>(string endpoint, TRequest data)
         {
             var response = await _httpClient.PostAsJsonAsync<TRequest>(endpoint, data);
             // Assuming you want to return some response data, adjust as needed

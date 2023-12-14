@@ -171,7 +171,7 @@ body {
     }
 
     .event button {
-        border-radius: 0.25rem;
+        border-radius: 0.50rem;
         background-color: #7C96B2;
         border: 0;
         padding: 0.75rem 4rem 0.75rem 4rem;
@@ -180,7 +180,7 @@ body {
     }
 
         .event button:hover {
-            background-color: #7C96B3;
+            background-color: #5c7796;
         }
 
     .event img {
@@ -191,17 +191,20 @@ body {
 
 
 
-button {
+button {  
     border-radius: 0.25rem;
     background-color: #7C96B2;
-    border: 0;
+    margin: 10px 0;
+    border: none;
     padding: 0.75rem 4rem 0.75rem 4rem;
     font-weight: bold;
     color: white;
+ 
 }
 
     button:hover {
-        background-color: #7C96B3;
+        background-color: #5c7796;
+        
     }
 
 
@@ -282,18 +285,7 @@ label {
     font-size: 24px;
 }
 
-.btn {
-    border-radius: 0.25rem;
-    background-color: #7C96B2;
-    border: 0;
-    padding: 0.75rem 4rem 0.75rem 4rem;
-    font-weight: bold;
-    color: white;
-}
 
-    btn:hover {
-        background-color: #7C96B3;
-    }
 
 a {
     color: #2196F3;
