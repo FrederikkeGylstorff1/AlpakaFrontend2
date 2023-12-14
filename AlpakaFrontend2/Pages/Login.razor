@@ -51,12 +51,12 @@
         {
             var tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
             await sessionStorage.SetAsync("authToken", tokenResponse.Token);
-
-            NavigationManager.NavigateTo("/alpakas");
+            NavigationManager.NavigateTo("/CreateAlpakaEvent", forceLoad: true);
         }
         else
         {
             message = "Login failed. Please try again.";
+            Console.WriteLine("Login failed"); // For debugging
         }
     }
 

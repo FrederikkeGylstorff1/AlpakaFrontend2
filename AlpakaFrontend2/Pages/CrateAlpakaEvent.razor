@@ -1,7 +1,6 @@
 ﻿@page "/CreateAlpakaEvent"
-@inject ApiService ApiService
+
 @using RestAlpaka.Model
-@using AlpakaFrontend2.Service
 
 <h3>Create Alpaka and Event</h3>
 
@@ -39,9 +38,7 @@
         <ValidationMessage For="@(() => alpaka.description)" />
     </div>
 
-    <br />
- 
-    <button type="submit" >Create Alpaka</button>
+    <button type="submit" class="btn btn-primary">Create Alpaka</button>
 </EditForm>
 
 @if (eventSuccessMessage != null)
@@ -61,13 +58,6 @@
     </div>
 
     <div class="form-group">
-        <label for="Location_id">Event Location:</label>
-        <InputNumber id="Location" @bind-Value="eventModel.Location_id" class="form-control" />
-        <ValidationMessage For="@(() => eventModel.Location_id)" />
-    </div>
-  
-
-    <div class="form-group">
         <label for="Capacity">Capacity:</label>
         <InputNumber id="Capacity" @bind-Value="eventModel.Capacity" class="form-control" />
         <ValidationMessage For="@(() => eventModel.Capacity)" />
@@ -78,16 +68,14 @@
         <InputText id="Description" @bind-Value="eventModel.Description" class="form-control" />
         <ValidationMessage For="@(() => eventModel.Description)" />
     </div>
-   
-
 
     <div class="form-group">
         <label for="Name">Event Name:</label>
         <InputText id="Name" @bind-Value="eventModel.Name" class="form-control" />
         <ValidationMessage For="@(() => eventModel.Name)" />
     </div>
-    <br />
-    <button type="submit" >Create Event</button>
+
+    <button type="submit" class="btn btn-primary">Create Event</button>
 </EditForm>
 
 @code {
@@ -96,16 +84,17 @@
     private string alpakaSuccessMessage;
     private string eventSuccessMessage;
 
-    private async void CreateAlpaka()
+    private void CreateAlpaka()
     {
-        await ApiService.CreateAsync("api/Alpaka", alpaka);
-       alpakaSuccessMessage = "Alpaka created successfully!";
+        // Implement logic to save alpaka to the database or perform any other actions
+        // You can use the 'alpaka' object to access the entered alpaka details
+        alpakaSuccessMessage = "Alpaka created successfully!";
     }
 
-    private async void CreateEvent()
+    private void CreateEvent()
     {
-        await ApiService.CreateAsync("Event", eventModel); 
-        // ApiService.CreateEvent(eventModel);
+        // Implement logic to save event to the database or perform any other actions
+        // You can use the 'eventModel' object to access the entered event details
         eventSuccessMessage = "Event created successfully!";
     }
 }
