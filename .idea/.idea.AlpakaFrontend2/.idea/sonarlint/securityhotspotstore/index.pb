@@ -169,3 +169,5 @@ Q
 !AlpakaFrontend2/Pages/Login.razor,0/e/0ec06ef8954e4dc19c3ccb3c09d99bddc6292e54
 T
 $UserManagement/UserManagement.csproj,6/1/61c286bbd734958490356d2e886d69c5211ebcdb
+R
+"AlpakaFrontend2/Pages/_Host.cshtml,c/0/c07b90588d715698886ec53999336759c5b95086
