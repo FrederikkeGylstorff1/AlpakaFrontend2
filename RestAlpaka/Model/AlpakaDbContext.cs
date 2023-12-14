@@ -14,7 +14,7 @@ namespace RestAlpaka.Model
         public DbSet<Bookings> Bookings { get; set; }
         public DbSet<Customers> Customers { get; set; }
 
-        public DbSet<Event> Events { get; set; }
+        public DbSet<Event> Event { get; set; }
 
         public DbSet<Location> Location { get; set; }
         public DbSet<Payments> Payments { get; set; }

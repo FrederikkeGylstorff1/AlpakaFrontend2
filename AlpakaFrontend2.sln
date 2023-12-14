@@ -5,9 +5,9 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlpakaFrontend2", "AlpakaFrontend2\AlpakaFrontend2.csproj", "{D5B07853-84AA-41F4-B468-ABB27855BBBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestAlpaka", "RestAlpaka\RestAlpaka.csproj", "{5FA27C21-A146-4746-8597-29C403EB51F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestAlpaka", "RestAlpaka\RestAlpaka.csproj", "{5FA27C21-A146-4746-8597-29C403EB51F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestAlpakaMongo", "RestAlpakaMongo\RestAlpakaMongo.csproj", "{E119BB4F-BE18-4C0D-B697-C57A336F8E39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestAlpakaMongo", "RestAlpakaMongo\RestAlpakaMongo.csproj", "{E119BB4F-BE18-4C0D-B697-C57A336F8E39}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestNeo4j", "..\app-dotnet\RestNeo4j\RestNeo4j.csproj", "{9B1EFE96-BACB-4376-8A04-DE1E5975FBA3}"
 EndProject

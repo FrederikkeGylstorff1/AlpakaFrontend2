@@ -1,0 +1,100 @@
+﻿@page "/CreateAlpakaEvent"
+
+@using RestAlpaka.Model
+
+<h3>Create Alpaka and Event</h3>
+
+@if (alpakaSuccessMessage != null)
+{
+    <p class="alert alert-success">@alpakaSuccessMessage</p>
+}
+
+<EditForm Model="@alpaka" OnValidSubmit="@CreateAlpaka">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <h4>Alpaka Information</h4>
+    <div class="form-group">
+        <label for="Alpaka_name">Alpaka Name:</label>
+        <InputText id="Alpaka_name" @bind-Value="alpaka.Alpaka_name" class="form-control" />
+        <ValidationMessage For="@(() => alpaka.Alpaka_name)" />
+    </div>
+
+    <div class="form-group">
+        <label for="color">Color:</label>
+        <InputText id="color" @bind-Value="alpaka.color" class="form-control" />
+        <ValidationMessage For="@(() => alpaka.color)" />
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <InputNumber id="age" @bind-Value="alpaka.age" class="form-control" />
+        <ValidationMessage For="@(() => alpaka.age)" />
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <InputText id="description" @bind-Value="alpaka.description" class="form-control" />
+        <ValidationMessage For="@(() => alpaka.description)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Alpaka</button>
+</EditForm>
+
+@if (eventSuccessMessage != null)
+{
+    <p class="alert alert-success">@eventSuccessMessage</p>
+}
+
+<EditForm Model="@eventModel" OnValidSubmit="@CreateEvent">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <h4>Event Information</h4>
+    <div class="form-group">
+        <label for="Event_date">Event Date:</label>
+        <InputDate id="Event_date" @bind-Value="eventModel.Event_date" class="form-control" />
+        <ValidationMessage For="@(() => eventModel.Event_date)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Capacity">Capacity:</label>
+        <InputNumber id="Capacity" @bind-Value="eventModel.Capacity" class="form-control" />
+        <ValidationMessage For="@(() => eventModel.Capacity)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Event Description:</label>
+        <InputText id="Description" @bind-Value="eventModel.Description" class="form-control" />
+        <ValidationMessage For="@(() => eventModel.Description)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Name">Event Name:</label>
+        <InputText id="Name" @bind-Value="eventModel.Name" class="form-control" />
+        <ValidationMessage For="@(() => eventModel.Name)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Event</button>
+</EditForm>
+
+@code {
+    private Alpaka alpaka = new Alpaka();
+    private Event eventModel = new Event();
+    private string alpakaSuccessMessage;
+    private string eventSuccessMessage;
+
+    private void CreateAlpaka()
+    {
+        // Implement logic to save alpaka to the database or perform any other actions
+        // You can use the 'alpaka' object to access the entered alpaka details
+        alpakaSuccessMessage = "Alpaka created successfully!";
+    }
+
+    private void CreateEvent()
+    {
+        // Implement logic to save event to the database or perform any other actions
+        // You can use the 'eventModel' object to access the entered event details
+        eventSuccessMessage = "Event created successfully!";
+    }
+}

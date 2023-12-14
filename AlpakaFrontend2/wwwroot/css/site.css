@@ -27,35 +27,23 @@
         content: "An error has occurred."
     }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
 .topnav {
     overflow: hidden;
-    background-color: white; /* Set the background color to white */
-  
- 
+    background-color: white;
 }
 
-
 .topnav-center {
-   /* justify-content: center;
-    align-items: center;*/
-    display: flex;
+    display: inline-block;
 }
 
 .topnav-right {
-    display: flex;
+    display: inline-block;
     float: right;
-    align-items: center;
 }
 
 .topnav a {
-    display: block;
-    color: #333; /* Set the text color to a color that contrasts with white */
-    text-align: center;
+    display: inline-block;
+    color: #333;
     padding: 14px 16px;
     text-decoration: none;
 }
@@ -65,24 +53,21 @@ body {
         color: black;
     }
 
-
-
 .navbar-brand {
     font-weight: bold;
-    color: #333; /* Set the text color of the brand */
+    color: #333;
 }
 
 .login-icon {
-    color: #333; /* Set the color of the icon */
-    font-size: 20px; /* Adjust the size of the icon */
+    color: #333;
+    font-size: 20px;
     margin-left: 10px;
-    cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+    cursor: pointer;
 }
 
     .login-icon:hover {
-        color: #4CAF50; /* Set the color on hover */
+        color: #4CAF50;
     }
-
 
 /* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
 @media screen and (max-width: 500px) {
@@ -96,7 +81,40 @@ body {
 
 /*alpakka page*/
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
 
+.alpaka {
+    text-align: center;
+    padding: 20px;
+}
+
+    .alpaka h1 {
+        color: #333;
+    }
+
+.alpaka-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 300px;
+    text-align: left;
+}
+
+    .alpaka-item p {
+        margin: 0;
+        padding: 5px 0;
+    }
+
+/*alpakka forside */
 
 .alpaka-item {
     
