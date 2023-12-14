@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestAlpakaMongo", "RestAlpa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestNeo4j", "..\app-dotnet\RestNeo4j\RestNeo4j.csproj", "{9B1EFE96-BACB-4376-8A04-DE1E5975FBA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagement", "UserManagement\UserManagement.csproj", "{10B24FA8-15E0-4D4B-8E68-6CAE9D24092D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9B1EFE96-BACB-4376-8A04-DE1E5975FBA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B1EFE96-BACB-4376-8A04-DE1E5975FBA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B1EFE96-BACB-4376-8A04-DE1E5975FBA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B24FA8-15E0-4D4B-8E68-6CAE9D24092D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B24FA8-15E0-4D4B-8E68-6CAE9D24092D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B24FA8-15E0-4D4B-8E68-6CAE9D24092D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B24FA8-15E0-4D4B-8E68-6CAE9D24092D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
