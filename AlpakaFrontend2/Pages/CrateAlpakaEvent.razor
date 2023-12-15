@@ -118,14 +118,29 @@
             {
                 NavigationManager.NavigateTo("login");
             }
+            else
+            {
+                var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+                var user = authState.User;
+
+                if (user.Identity.IsAuthenticated)
+                {
+                    // Assuming the role is stored in a claim named "Role"
+                    var isAdmin = user.HasClaim(c => c.Type == "Role" && c.Value == "Admin");
+                    if (!isAdmin)
+                    {
+                        // Redirect non-admin users
+                        NavigationManager.NavigateTo("not-authorized");
+                    }
+                }
+            }
 
             StateHasChanged(); // Re-render the component
         }
     }
 
 
-
-    private async void CreateAlpaka()
+    private void CreateAlpaka()
     {
         await ApiService.CreateAsync("api/Alpaka", alpaka);
         alpakaSuccessMessage = "Alpaka created successfully!";
