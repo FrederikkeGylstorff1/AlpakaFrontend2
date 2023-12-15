@@ -167,3 +167,7 @@ L
 RestAlpaka/passwordHasher.cs,b/c/bc76cc6e26799352b580d6963ecb7d421842a986
 R
 "AlpakaFrontend2/Pages/Events.razor,8/8/88208c27ecbd3d4f8103a50117863c90504323d4
+n
+>UserManagement/Migrations/ApplicationDbContextModelSnapshot.cs,3/9/390d4a5b96b85a4558095d5bb953a99e16edda27
+c
+3UserManagement/Migrations/20231214095137_Initial.cs,2/8/289cc6d915f3c949cfe535300dc2f1f6283b6855
