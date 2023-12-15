@@ -1,6 +1,13 @@
 ﻿@page "/CreateAlpakaEvent"
 @inject ApiService ApiService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject ProtectedSessionStorage sessionStorage
+
+
 @using RestAlpaka.Model
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using AlpakaFrontend2.Service
 
 <h3>Create Alpaka and Event</h3>
@@ -95,8 +102,26 @@
     private Event eventModel = new Event();
     private string alpakaSuccessMessage;
     private string eventSuccessMessage;
+    private const string TokenKey = "authToken"; 
+    private bool isAuthenticated = false;
 
-    private async void CreateAlpaka()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var tokenResult = await sessionStorage.GetAsync<string>(TokenKey);
+            isAuthenticated = tokenResult.Success && !string.IsNullOrEmpty(tokenResult.Value);
+
+            if (!isAuthenticated)
+            {
+                NavigationManager.NavigateTo("login");
+            }
+
+            StateHasChanged(); // Re-render the component
+        }
+    }
+
+    private void CreateAlpaka()
     {
         await ApiService.CreateAsync("api/Alpaka", alpaka);
         alpakaSuccessMessage = "Alpaka created successfully!";
