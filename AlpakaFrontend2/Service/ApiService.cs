@@ -33,7 +33,7 @@ namespace AlpakaFrontend2.Service
         }
 
 
-            public async Task<TResponse> CreateAsync<TRequest, TResponse>(string endpoint, TRequest data)
+         public async Task<TResponse> CreateAsync<TRequest, TResponse>(string endpoint, TRequest data)
         {
             var response = await _httpClient.PostAsJsonAsync<TRequest>(endpoint, data);
             // Assuming you want to return some response data, adjust as needed
