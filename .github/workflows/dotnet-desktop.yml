@@ -38,7 +38,7 @@ jobs:
     - name: Apply migration.sql to MySQL
       run: |
         sudo apt-get install -y mysql-client
-        mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < PersnoLib/migration.sql
+        mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < UserManagement/migration.sql
     - name: Build
       run: dotnet build --no-restore
 
