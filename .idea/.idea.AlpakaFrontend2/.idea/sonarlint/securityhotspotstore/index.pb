@@ -171,3 +171,15 @@ n
 >UserManagement/Migrations/ApplicationDbContextModelSnapshot.cs,3/9/390d4a5b96b85a4558095d5bb953a99e16edda27
 c
 3UserManagement/Migrations/20231214095137_Initial.cs,2/8/289cc6d915f3c949cfe535300dc2f1f6283b6855
+V
+&RestAlpaka/Managers/CustomerManager.cs,3/3/33033488f82285f81284ca7b53b379f73703d895
+U
+%app-dotnet/RestNeo4j/appsettings.json,5/a/5a3120795fd0eadb02b7a0c2bd92eb4aa74c0f43
+D
+AlpakaFrontend2/.env,1/f/1f515de3b1112a80467a9c5d6ae8117d196dd8e4
+?
+RestAlpaka/.env,4/e/4e7eca1f3c94c0bf49c8bdb0aa03d1ba7831a143
+C
+UserManagement/.env,b/f/bf6a5c9fc66a05dd8ba3ee51e7e4c2356d60ade8
+Q
+!UserManagement/CreateDatabase.sql,7/f/7f204b71d75c0023bd8bd0cdf8a78cedfadb5eb4
