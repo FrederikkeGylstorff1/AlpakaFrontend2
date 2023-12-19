@@ -30,16 +30,19 @@ jobs:
       with:
         dotnet-version: 7.0.x
 
-    - name: Apply migration.sql to MySQL
-      run: |
-        sudo apt-get install -y mysql-client
-        mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < UserManagement/Migrations/20231214095137_Initial.cs
-        
     - name: Restore dependencies
       run: dotnet restore UserManagement/UserManagement.csproj
 
     - name: Build
       run: dotnet build UserManagement/UserManagement.csproj --no-restore
+
+    - name: Generate Migration SQL Script
+      run: dotnet ef migrations script -o migration.sql --project UserManagement/UserManagement.csproj
+
+    - name: Apply Migration Script to MySQL
+      run: |
+        sudo apt-get install -y mysql-client
+        mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < migration.sql
 
     - name: Test
       run: dotnet test UserManagement/UserManagement.csproj --no-build --verbosity normal
