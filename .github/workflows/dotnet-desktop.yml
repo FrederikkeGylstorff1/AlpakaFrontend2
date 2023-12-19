@@ -49,3 +49,6 @@ jobs:
 
     - name: Test
       run: dotnet test UserManagement/UserManagement.csproj --no-build --verbosity normal
+
+    - name: Build
+      run: dotnet build UserManagement/UserManagement.csproj
