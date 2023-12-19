@@ -41,8 +41,9 @@ jobs:
         mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < UserManagement/migration.sql
         
     - name: Build
-      run: dotnet build UserManagement/UserManagement.sln --no-restore
+      run: dotnet build UserManagement/UserManagement.csproj --no-restore
 
     - name: Test
-      run: dotnet test UserManagement/UserManagement.sln --no-build --verbosity normal
+      run: dotnet test UserManagement/UserManagement.csproj --no-build --verbosity normal
+
 
