@@ -15,13 +15,9 @@ jobs:
 
     services:
       neo4j:
-        image: neo4j:4.4.8  
+        image: neo4j:latest  # Use the latest version of Neo4j
         ports:
-          - 7474:7474
           - 7687:7687
-        env:
-          NEO4J_AUTH: neo4j/password
-        options: --health-cmd="curl --fail http://neo4j:password@localhost:7474/db/data/ || exit 1" --health-interval=10s --health-timeout=5s --health-retries=5
 
     steps:
       - uses: actions/checkout@v2
