@@ -40,6 +40,9 @@ jobs:
         sudo apt-get install -y mysql-client
         mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < UserManagement/migration.sql
         
+    - name: Restore dependencies
+      run: dotnet restore UserManagement/UserManagement.csproj
+
     - name: Build
       run: dotnet build UserManagement/UserManagement.csproj --no-restore
 
