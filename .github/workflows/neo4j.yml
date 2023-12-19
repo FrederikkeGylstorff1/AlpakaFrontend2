@@ -1,0 +1,41 @@
+name: .NET
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    services:
+      neo4j:
+        image: neo4j:latest
+        ports:
+          - 7474:7474
+          - 7687:7687
+        env:
+          NEO4J_AUTH: neo4j/password
+        options: --health-cmd="curl --fail http://neo4j:password@localhost:7474/db/data/ || exit 1" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore RestNeo4j/RestNeo4j.csproj
+
+      - name: Build
+        run: dotnet build --no-restore RestNeo4j/RestNeo4j.csproj
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal RestNeo4j/RestNeo4j.csproj
