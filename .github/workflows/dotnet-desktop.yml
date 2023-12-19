@@ -31,7 +31,7 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Install Entity Framework Core CLI
-      run: dotnet tool install --global dotnet-ef --version 7.0.0
+      run: dotnet tool install --global dotnet-ef
 
     - name: Restore dependencies
       run: dotnet restore UserManagement/UserManagement.csproj
@@ -49,6 +49,3 @@ jobs:
 
     - name: Test
       run: dotnet test UserManagement/UserManagement.csproj --no-build --verbosity normal
-
-    - name: Build
-      run: dotnet build UserManagement/UserManagement.csproj
