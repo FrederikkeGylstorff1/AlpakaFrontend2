@@ -15,7 +15,7 @@ jobs:
 
     services:
       neo4j:
-        image: neo4j:latest
+        image: neo4j:4.4.8  
         ports:
           - 7474:7474
           - 7687:7687
