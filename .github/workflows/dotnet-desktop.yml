@@ -39,8 +39,10 @@ jobs:
       run: |
         sudo apt-get install -y mysql-client
         mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < UserManagement/migration.sql
+        
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build UserManagement/UserManagement.sln --no-restore
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test UserManagement/UserManagement.sln --no-build --verbosity normal
+
