@@ -2,12 +2,15 @@ name: .NET
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     services:
@@ -23,35 +26,23 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7.0.x
+      - name: Restore dependencies
+        run: dotnet restore UserManagement/UserManagement.csproj
 
-    - name: Install Entity Framework Core CLI
-      run: dotnet tool install --global dotnet-ef --version 7.0.0
+      - name: Apply migration.sql to MySQL
+        run: |
+          sudo apt-get install -y mysql-client
+          mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < UserManagement/CreateDatabase.sql
 
-    - name: Restore dependencies
-      run: dotnet restore UserManagement/UserManagement.csproj
+      - name: Build
+        run: dotnet build --no-restore UserManagement/UserManagement.csproj
 
-    - name: Build
-      run: dotnet build UserManagement/UserManagement.csproj --no-restore
-
-    - name: Generate Migration SQL Script
-      run: dotnet ef migrations script -o migration.sql --project UserManagement/UserManagement.csproj
-
-    - name: Print Build Output
-      run: cat $GITHUB_WORKSPACE/UserManagement/UserManagement/bin/Debug/net6.0/*.log
-
-    - name: Apply Migration Script to MySQL
-      run: |
-        sudo apt-get install -y mysql-client
-        mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < migration.sql
-
-    - name: Test
-      run: dotnet test UserManagement/UserManagement.csproj --no-build --verbosity normal
-
-    - name: Build Again
-      run: dotnet build UserManagement/UserManagement.csproj
+      - name: Test
+        run: dotnet test --no-build --verbosity normal UserManagement/UserManagement.csproj
