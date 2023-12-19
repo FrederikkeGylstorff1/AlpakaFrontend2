@@ -1,0 +1,40 @@
+name: .NET
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        options: --health-cmd="mongo --eval 'db.runCommand({ ping: 1 })'" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore RestAlpakaMongo/RestAlpakaMongo.csproj
+
+  
+
+      - name: Build
+        run: dotnet build --no-restore RestAlpakaMongo/RestAlpakaMongo.csproj
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal RestAlpakaMongo/RestAlpakaMongo.csproj
