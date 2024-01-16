@@ -1,0 +1,48 @@
+name: .NET
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: rootpassword
+          MYSQL_PASSWORD: rootpassword
+          MYSQL_USER: user
+          MYSQL_DATABASE: addresses
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore UserManagement/UserManagement.csproj
+
+      - name: Apply migration.sql to MySQL
+        run: |
+          sudo apt-get install -y mysql-client
+          mysql -h127.0.0.1 -P3306 -uroot -prootpassword addresses < UserManagement/CreateDatabase.sql
+
+      - name: Build
+        run: dotnet build --no-restore UserManagement/UserManagement.csproj
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal UserManagement/UserManagement.csproj
