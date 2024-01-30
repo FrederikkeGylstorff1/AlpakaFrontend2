@@ -37,6 +37,17 @@ namespace RestAlpaka.Controllers
             return alpaka;
         }
 
+
+        //// POST: api/Alpaka
+        //[HttpPost]
+        //public async Task<ActionResult<Alpaka>> Post([FromForm] Alpaka alpaka)
+        //{
+        //    var alpakaId = await _alpakaManager.CreateAlpakaAsync(alpaka);
+        //    return CreatedAtAction(nameof(Get), new { id = alpakaId }, alpaka);
+        //}
+
+
+
         // POST: api/Alpaka
         [HttpPost]
         public async Task<ActionResult<Alpaka>> Post(Alpaka alpaka)

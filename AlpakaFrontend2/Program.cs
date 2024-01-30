@@ -37,7 +37,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7150/") });
+builder.Services.AddAntiforgery(options =>
+{
+    options.HeaderName = "__RequestVerificationToken."; 
+});
+
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:44364/") });
 
 // Add other required services
 builder.Services.AddScoped<ApiService>();
