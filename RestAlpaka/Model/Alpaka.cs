@@ -10,8 +10,6 @@ namespace RestAlpaka.Model
 
         [Required(ErrorMessage = "The color field is required.")]
         public string color { get; set; }
-
-       
         
         [Required(ErrorMessage = "The Alpaka_name field is required.")]
         public string Alpaka_name { get; set; }
@@ -19,7 +17,9 @@ namespace RestAlpaka.Model
         [Required(ErrorMessage = "The description field is required.")]
         public string description { get; set; }
 
-        public byte[]? ImageData { get; set; }
+        public int ?Age { get; set; }
+
+        public string ?Img { get; set; }
 
       
 

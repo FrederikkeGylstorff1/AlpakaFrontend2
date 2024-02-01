@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAlpaka.Model;
 
@@ -10,9 +11,11 @@ using RestAlpaka.Model;
 namespace RestAlpaka.Migrations
 {
     [DbContext(typeof(AlpakaDbContext))]
-    partial class AlpakaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240130175450_img3MigrationName")]
+    partial class img3MigrationName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

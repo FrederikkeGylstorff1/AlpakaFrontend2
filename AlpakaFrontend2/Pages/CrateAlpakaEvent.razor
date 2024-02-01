@@ -3,6 +3,7 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @inject ProtectedSessionStorage sessionStorage
+@inject IWebHostEnvironment _hostEnvironment
 
 
 @using RestAlpaka.Model
@@ -48,14 +49,17 @@
 
 
     <div class="form-group">
-        <label for="image">Alpaka Image:</label>
-        <InputFile id="image" @bind-value="alpaka.ImageData" class="form-control" />
-        <ValidationMessage For="@(() => alpaka.ImageData)" />
+        <label for="Img">Alpaka Image:</label>
+        <InputFile id="Img" OnChange="@HandleAlpakaImageChange" class="form-control" />
+        <ValidationMessage For="@(() => alpaka.Img)" />
     </div>
 
     <br />
 
     <button type="submit">Create Alpaka</button>
+
+
+
 </EditForm>
 
 @if (eventSuccessMessage != null)
@@ -111,6 +115,10 @@
     private string eventSuccessMessage;
     private const string TokenKey = "authToken"; 
     private bool isAuthenticated = false;
+    private string uploadedImageUrl;
+
+
+    
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -157,18 +165,61 @@
     //     await ApiService.CreateAsync()
     // }
 
-    
+
+    // private async Task CreateAlpaka()
+    // {
+    //     try
+    //     {
+    //         await ApiService.CreateAsync("api/Alpaka", alpaka);
+    //         alpakaSuccessMessage = "Alpaka created successfully!";
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         // Handle exceptions, display error messages, etc.
+    //         alpakaSuccessMessage = $"Error creating Alpaka: {ex.Message}";
+    //     }
+    // }
+
+
+
     private async Task CreateAlpaka()
     {
         try
         {
+            alpaka.Img = uploadedImageUrl; // Assign the uploaded image URL to the Alpaka object
             await ApiService.CreateAsync("api/Alpaka", alpaka);
             alpakaSuccessMessage = "Alpaka created successfully!";
         }
         catch (Exception ex)
         {
-            // Handle exceptions, display error messages, etc.
             alpakaSuccessMessage = $"Error creating Alpaka: {ex.Message}";
+        }
+    }
+
+    private async Task HandleAlpakaImageChange(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            if (e.File != null)
+            {
+                var imageFile = e.File;
+                var path = Path.Combine(_hostEnvironment.WebRootPath, "Media", imageFile.Name);
+
+                using var fileStream = new FileStream(path, FileMode.Create);
+                await imageFile.OpenReadStream().CopyToAsync(fileStream);
+
+                // Generate the URL for the uploaded image
+                uploadedImageUrl = $"{NavigationManager.BaseUri}Media/{imageFile.Name}";
+            }
+            else
+            {
+                throw new Exception("No file selected");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            // Log the error or display an error message as needed
         }
     }
 

@@ -13,7 +13,7 @@ namespace RestAlpaka.Model
 
         public string description { get; set; }
 
-        public byte[]? ImageData { get; set; }
+        public string ?Img { get; set; }
 
        
 

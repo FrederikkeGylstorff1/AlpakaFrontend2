@@ -17,17 +17,17 @@ public abstract class BaseDBContext<T> where T : class, new()
         await _dbContext.SaveChangesAsync();
     }
 
-    public virtual async Task<List<T>> GetAllAsync()
-    {
-        var entities = await _dbSet.ToListAsync();
+    //public virtual async Task<List<T>> GetAllAsync()
+    //{
+    //    var entities = await _dbSet.ToListAsync();
 
-        foreach (var entity in entities)
-        {
-            HandleDBNullValues(entity);
-        }
+    //    foreach (var entity in entities)
+    //    {
+    //        HandleDBNullValues(entity);
+    //    }
 
-        return entities;
-    }
+    //    return entities;
+    //}
 
     private void HandleDBNullValues(T entity)
     {
@@ -47,10 +47,10 @@ public abstract class BaseDBContext<T> where T : class, new()
         }
     }
 
-    //public virtual async Task<List<T>> GetAllAsync()
-    //{
-    //    return await _dbSet.ToListAsync();
-    //}
+    public virtual async Task<List<T>> GetAllAsync()
+    {
+        return await _dbSet.ToListAsync();
+    }
 
     public virtual async Task<T> GetByIdAsync(int id)
     {
