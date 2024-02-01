@@ -1,4 +1,7 @@
 using MongoDB.Driver;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace RestAlpakaMongo.GenericBase
 {
@@ -22,19 +25,42 @@ namespace RestAlpakaMongo.GenericBase
             return await _collection.Find(Builders<T>.Filter.Eq("Id", id)).FirstOrDefaultAsync();
         }
 
-        public async Task CreateAsync(T entity)
+        public async Task CreateAsync(T entity, IClientSessionHandle session = null)
         {
-            await _collection.InsertOneAsync(entity);
+            if (session != null)
+            {
+                await _collection.InsertOneAsync(session, entity);
+            }
+            else
+            {
+                await _collection.InsertOneAsync(entity);
+            }
         }
 
-        public async Task UpdateAsync(string id, T entity)
+        public async Task UpdateAsync(string id, T entity, IClientSessionHandle session = null)
         {
-            await _collection.ReplaceOneAsync(Builders<T>.Filter.Eq("Id", id), entity);
+            var filter = Builders<T>.Filter.Eq("Id", id);
+            if (session != null)
+            {
+                await _collection.ReplaceOneAsync(session, filter, entity);
+            }
+            else
+            {
+                await _collection.ReplaceOneAsync(filter, entity);
+            }
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(string id, IClientSessionHandle session = null)
         {
-            await _collection.DeleteOneAsync(Builders<T>.Filter.Eq("Id", id));
+            var filter = Builders<T>.Filter.Eq("Id", id);
+            if (session != null)
+            {
+                await _collection.DeleteOneAsync(session, filter);
+            }
+            else
+            {
+                await _collection.DeleteOneAsync(filter);
+            }
         }
     }
 }
